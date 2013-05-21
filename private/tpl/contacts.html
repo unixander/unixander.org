@@ -1,0 +1,15 @@
+<h2>{{contacts.title.toUpperCase()}}</h2>
+<div>
+	<ul ui-sortable ng-model="contacts.content">
+		<li style="list-style-type:none" class="form-inline" ng-repeat="(c,contact) in contacts.content">
+			<button class="btn btn-small btn-danger" ng-click="del(c,contacts.content)">X</button>
+			<input type="text" placeholder="Sprite" ng-model="contact.sprite"/> 
+			<input type="text" placeholder="Text" ng-model="contact.text"/> 
+			<input type="text" class="span5" placeholder="Link" ng-model="contact.link"/> 
+		</li>
+	</ul>
+</div>
+<button type="button" ng-click="add(contacts.content)" class="btn btn-success">+</button>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>

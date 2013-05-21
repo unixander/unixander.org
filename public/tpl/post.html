@@ -1,0 +1,53 @@
+<article>
+<div class="data">
+	<h2>{{post.title}}</h2>
+	<div id="post_content">
+	</div>
+	<div>
+		<span class="author label label-info">Written by {{post.author}}</span>
+		<span class="date label">{{post.time}}</span>
+	</div>
+	<a ng-repeat="tag in post.tag" style="margin: 2px" class="label label-inverse" href="#/blog/tag/{{tag.name}}">{{tag.name}}
+	</a>
+	<hr>
+	<div class="post-comments">
+		<h3>Comments</h3>
+		<div ng-repeat="comment in post.comments" class="comment well">
+			<span class="name .pull-left">by <b>{{comment.from}}</b></span>
+			<span class="date ">({{comment.time}})</span>
+			<p>{{comment.text}}</p>
+		</div>
+		<div class="comment well add">
+			<a href="#addCommentModal" data-toggle="modal">
+				<h4>Add new Comment</h4>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div id="addCommentModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="AddCommentModal" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+   		<h3 id="AddCommentModal">Add new Comment</h3>
+	</div>
+	<div class="modal-body">
+		<label>Name:
+			<span ng-show="error.from" class="label label-important">Ask as Anonymous</span>
+		</label>
+		<input type="text" name="from" ng-model="newComment.from" placeholder="Enter your name" required>
+		<label>Comment:
+			<span ng-show="error.comment" class="label label-important">Required</span>
+		</label>
+		<textarea class="span5" ng-model="newComment.text" required></textarea>
+		<label class="checkbox">
+	    	<input type="checkbox" ng-model="error.check"> Check me out
+		    <span ng-show="error.check" class="label label-success">You're human</span>
+		    <span ng-show="!error.check" class="label label-important">Required</span>
+		</label>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    <button class="btn btn-primary" ng-click="addComment()">Add comment</button>
+	</div>
+</div>
+</article>

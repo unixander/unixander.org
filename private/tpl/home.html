@@ -1,0 +1,16 @@
+<h2>Page {{home.title.toUpperCase()}}</h2>
+<ul ng-model="home.content" ui-sortable>
+	<li ng-model="home.content" style="list-style-type:none"  ng-repeat="(i,p) in home.content">
+		<button type="button" class="close" ng-click="delP(i)"  aria-hidden="true">&times;</button>
+		<textarea class="span12" ng-model="p.p"></textarea>
+	</li>
+</ul>
+<hr>
+
+<button type="button" ng-click="addP()" class="btn btn-success">+</button>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>
+
+
+

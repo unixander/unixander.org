@@ -1,0 +1,31 @@
+<h2>Post</h2>
+<div>
+<input type="text" ng-model="post.title" class="span12" placeholder="title">
+<label>Content</label>
+<textarea class="span12" ng-model="post.content"></textarea>
+<input type="text" ng-model="post.author" class="span12" placeholder="Author">
+<label>Tags 
+	<button type="button" ng-click='add(post.tag)' class="btn btn-success btn-small">+</button>
+</label>
+<ul ui-sortable ng-model="post.tag">
+	<li style="list-style-type: none" class="form-inline" ng-repeat="tag in post.tag">
+		<button class="btn btn-small" ng-click="del($index,post.tag)">X</button>
+		<input type="text" class="span10" ng-model="tag.name" placeholder="Title"/>
+	</li>
+</ul>
+<article>
+	<div class="post-comments">
+		<h3>Comments</h3>
+		<div ng-repeat="(c,comment) in post.comments" class="comment well">
+			<button type="button" class="close" ng-click="del(c,post.comments)"  aria-hidden="true">&times;</button>
+			<span class="name .pull-left">by <b>{{comment.from}}</b></span>
+			<span class="date ">({{comment.time}})</span>
+			<p>{{comment.text}}</p>
+		</div>
+	</div>
+</article>
+</div>
+<button type="button" ng-click="remove()" class="btn btn-danger">X</button>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>

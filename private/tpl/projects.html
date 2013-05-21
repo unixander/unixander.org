@@ -1,0 +1,69 @@
+<h2>{{projects.title.toUpperCase()}}</h2>
+<div class="accordion" id="acc_projects">
+<ul ui-sortable ng-model="projects.content">
+	<li style="list-style-type:none" ng-repeat="(i,project) in projects.content">
+		<button type="button" class="close" ng-click="del(i)"  aria-hidden="true">&times;</button>
+		<div class="accordion-group projects-item">
+			<div class="accordion-heading projectname">
+				<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#acc_projects" href="#{{project.link}}">{{project.name}}</a>
+			</div>
+			<div id="{{project.link}}" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<b class="note">Name</b>: 
+					<input type="text" class="span12"  ng-model="project.name" placeholder="Title"/>
+					<br>
+					<b class="note">Link</b>: 
+					<input type="text" class="span12"  ng-model="project.link" placeholder="Link"/>
+					<br>
+					<b class="note">Release Date</b>: 
+					<input type="text" class="span12"  ng-model="project.release"/>
+					<br>
+					<b class="note">Current version</b>:
+					<input type="text" class="span12"  ng-model="project.version"/>
+					<br>
+					<b class="note">Current status</b>: 
+					<input type="text" class="span12"  class="span12"  ng-model="project.status"/>
+					<br>
+					<b class="note">My role</b>:
+					<input type="text" class="span12"  ng-model="project.role"/>
+					<br>
+					<b class="note">Website(s)</b>:<button ng-click="addWebsite(i)" class="btn btn-small btn-success">+</button>
+					<ul ui-sortable="{connectWith:'.website'}">
+						<li style="list-style-type: none" class="form-inline" ng-repeat="(w,website) in project.website">
+							<button ng-click="delWebsite(i,w)" class="btn  btn-danger">X</button>
+							<input type="text" ng-model="website.url" placeholder="URL"/> 
+							<input type="text" ng-model="website.title" placeholder="Title"/> 
+						</li>
+					</ul>
+					
+					<br>
+					<b class="note">Requirements</b>:
+					<input type="text" class="span12" ng-model="project.requirements"/>
+					<br>
+					<b class="note">Description</b>: 
+					<textarea ng-model="project.description" class="span12"></textarea>
+					<br>
+					<b class="note" >Developer's notes:</b> 
+					<textarea ng-model="project.notes" class="span12"></textarea>
+					<br>
+					<hr>
+					Images:<button ng-click="addImage(i)" class="btn btn-small btn-success">+</button><br><br>
+					<ul ui-sortable="{connectWith:'.images'}">
+						<li style="list-style-type: none" class="form-inline" ng-repeat="(j,image) in project.images">
+							<button ng-click="delImage(i,j)" class="btn  btn-danger">X</button>
+							<input type="text" ng-model="image.url" placeholder="URL"/> 
+							<input type="text" ng-model="image.title" placeholder="Title"/> 
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>	
+	</li>
+</ul>
+</div>
+<hr>
+<button type="button" ng-click="add()" class="btn btn-success">+</button>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>

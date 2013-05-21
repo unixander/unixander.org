@@ -1,0 +1,102 @@
+<cv>
+	<h2>CV</h2>
+	<div id="data" class="well">
+		<div class="c17">
+			<p class="c7 c18">
+				<span class="c0">{{cv.name}}</span>
+			</p>
+			<hr>
+			<p class="c1">
+				<span class="c0"></span>
+			</p>
+			<p class="c7 c16">
+				<span class="c6 c9">Personal Profile</span>
+			</p>
+			<p ng-repeat="contact in cv.contacts" class="c7">
+				<span class="c0">{{contact.type}}:</span><span class="c3">&nbsp; &nbsp;</span><span class="c4 c3"><a class="c11" href="{{contact.link}}">{{contact.title}}</a></span>
+			</p>
+			<p class="c1">
+				<span class="c2 c6"></span>
+			</p>
+			<p class="c7">
+				<span class="c6 c9">Education</span>
+			</p>
+			<div ng-repeat="edu in cv.education">
+			<p class="c1">
+				<span class="c2"></span>
+			</p>
+			<p class="c5">
+				<span class="c0">{{edu.title}}</span>
+			</p>
+			<p class="c5">
+				<span class="c15">{{edu.period}}</span>
+			</p>
+			<p class="c5">
+				<span class="c3">{{edu.degree}}</span>
+			</p>
+			<p class="c5 c14">
+				<span class="c2"></span>
+			</p>
+			</div>
+			<p class="c7">
+				<span class="c6 c9">Language Skills</span>
+			</p>
+			<p class="c1">
+				<span class="c2 c6"></span>
+			</p>
+			<ol class="c10" start="1">
+				<li ng-repeat="lang in cv.language" class="c8 c7">
+					<span class="c0">{{lang.lang}}</span><span class="c3">&nbsp;- {{lang.level}}</span>
+				</li>
+			</ol>
+			<p class="c1">
+				<span class="c2 c6"></span>
+			</p>
+			<p class="c7">
+				<span class="c6 c9">Summary Of Qualification</span>
+			</p>
+			<p class="c1">
+				<span class="c2 c6"></span>
+			</p>
+			<p class="c5">
+				<span class="c3">Strongest skill areas are:</span>
+			</p>
+			<ol class="c10" start="1">
+				<li ng-repeat="skill in cv.skills" class="c8 c7">
+					<span class="c3">{{skill.p}}</span>
+				</li>
+			</ol>
+			<p class="c1">
+				<span class="c2"></span>
+			</p>
+			<p class="c7">
+				<span class="c6 c9">Projects</span>
+			</p>
+			<p class="c1">
+				<span class="c2 c6"></span>
+			</p>
+			<ol class="c10" start="1">
+				<li class="c7 c8">
+					<span class="c0">Pet projects</span><a href="#projects">&nbsp;[link]</a>
+				</li>
+			</ol>
+			<ol class="c13" start="1">
+				<li ng-repeat="project in cv.projects.pet"class="c12 c7">
+					<span class="c0">{{project.title}}</span><span class="c3">.{{project.description}}</span>
+				</li>
+			</ol>
+			<ol class="c10" start="2">
+				<li class="c8 c7">
+					<span class="c0">Contributing</span>
+				</li>
+			</ol>
+			<ol class="c13" start="1">
+				<li ng-repeat="project in cv.projects.contributor" class="c12 c7">
+					<span class="c0">{{project.title}}</span><span class="c3">{{project.description}} (role: <b>{{project.role}}</b>, website: </span><span class="c4 c3"><a class="c11" href="{{project.url}}">{{project.url}}</a></span><span class="c3">)</span>
+				</li>
+			</ol>
+		</div>
+		<hr>
+		<a class="btn" target="_blank" href="https://docs.google.com/document/d/1050JiIY9riAWZ5LbTIUufSzJyIHsBM-QcQRp_rUyCRw/edit?usp=sharing">View on Google Docs</a>
+		</div>
+</cv>

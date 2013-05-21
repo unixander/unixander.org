@@ -1,0 +1,59 @@
+<contacts>
+<div class="data">
+	<h2>{{contacts.title.toUpperCase()}}</h2>
+	<div id="Contacts">
+			<a ng-repeat="contact in contacts.content" href="{{contact.link}}">
+				<div class="sprites" id="{{contact.sprite}}">
+					<div class="link">
+						{{contact.text}}
+					</div>
+				</div>
+			</a>
+		<div>
+			<a href="#sendMailModal" data-toggle="modal">
+				<div class="sprites" id="mail">
+					<div class="link">
+						Send direct mail
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div id="sendMailModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="SendMailModal" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+   		<h3 id="SendMailModal">Send Message</h3>
+	</div>
+	<div class="modal-body">
+		<label>Your Name:
+			<span ng-show="!msg.from" class="label label-important">Required</span>
+		</label>
+		<input type="text" name="from" ng-model="msg.from" placeholder="Enter your name" required>
+		<label>Your Email:
+			<span ng-show="!msg.mail" class="label label-important">Required</span>
+		</label>
+		<input type="text" name="mail" ng-model="msg.mail" placeholder="Enter your email" required>
+		<label>
+			Title:
+		</label>
+		<input type="text" name="subkect" ng-model="msg.title" placeholder="Enter subject of your message">
+		<label>Message:
+			<span ng-show="!msg.text" class="label label-important">Required</span>
+		</label>
+		<textarea class="span5" ng-model="msg.text" required></textarea>
+		<label class="checkbox">
+	    	<input type="checkbox" ng-model="msg.check"> Check me, please
+		    <span ng-show="msg.check" class="label label-success">You're human</span>
+		    <span ng-show="!msg.check" class="label label-important">Required</span>
+		</label>
+		<div id="success-msg" class="alert alert-success" ng-show="sent">Your message has been sent to Unixander. Thank You</div>
+		<div class="alert alert-error" ng-show="error">An error occured. Please try later</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    <button class="btn btn-primary" ng-click="sendMessage()">SendMessage</button>
+	</div>
+</div>
+<contacts>

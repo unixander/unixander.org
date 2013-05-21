@@ -1,0 +1,67 @@
+<questions>
+<div class="data">
+	<h2>Questions</h2>
+	<a href="#askQuestionModal" role="button" class="btn" data-toggle="modal">Ask a question</a>
+	<div id="success-msg" class="alert alert-success" ng-show="ask.sent">Your question has been sent to Unixander. Thank You</div>
+	<hr>
+	<div ng-repeat="question in questions " ng-model="questions" id="{{question._id}}" class="full-message" ng-click="onQuestion(this)">
+	<div class="question" title="Click here">
+		<span class="name pull-left">{{question.from}}</span>
+		<span class="date pull-right">{{question.time}}</span>
+		<br>
+		<p>
+			{{question.question}}
+		</p>
+	</div>
+	<div class="answer" style="display:none">
+		<span class="name pull-left"><i>Answer</i></span>
+		<br>
+		<p>
+			<b><i>{{question.answer}}</i></b>
+		</p>
+	</div>
+	</span>
+</div>
+</questions>
+<div class="pagination">
+  <ul>
+    <li ng-repeat="i in pages"><a href='#/ask/{{i}}'>{{i}}</a></li>
+  </ul>
+</div>
+
+</div>
+
+<div id="askQuestionModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="AskQuestionModal" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    		<h3 id="AskQuestionModal">Ask a Question</h3>
+		</div>
+		<div class="modal-body">
+			<label>Name
+				<span ng-show="error.name" class="label label-important">Ask as Anonymous</span>
+			</label>
+			<input type="text" name="from" ng-model="ask.from" placeholder="Enter your name" required>
+			<label>Question
+				<span ng-show="error.question" class="label label-important">Required</span>
+			</label>
+			<textarea class="span5" ng-model="ask.question" required></textarea>
+			<label class="checkbox">
+		      <input type="checkbox" ng-model="ask.check"> Check me out
+		      <span ng-show="ask.check" class="label label-success">You're human</span>
+		      <span ng-show="error.check" class="label label-important">Required</span>
+		    </label>
+		    <label class="checkbox">
+		    	<input type="checkbox" ng-model="ask.private"> Private question
+		    	<span ng-show="ask.private" class="label label-info">Your question would not be post on questions list</span>
+		    </label>
+		    <label class="checkbox">
+		      <input type="checkbox" ng-model="ask.to"> I want receive answer
+		      <span ng-show="ask.to" class="label label-info">Answer will be sent to the provided email address</span>
+		    </label>
+			<input type="email" ng-model="ask.reply_to" ng-show="ask.to" placeholder="Enter your email"/>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		    <button class="btn btn-primary" ng-click="submitQuestion()">Ask</button>
+		</div>
+	</div>

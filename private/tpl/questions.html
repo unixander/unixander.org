@@ -1,0 +1,36 @@
+<questions>
+<div class="data">
+	<h2>Questions</h2>
+	<div ng-repeat="(q,question) in questions " ng-model="questions" id="{{question._id}}" class="full-message" >
+	<div class="question" title="Click here" ng-click="onQuestion(this)">
+		<span class="name pull-left">{{question.from}} </span>
+		<span class="label label-warning" ng-show="!question.answered">Not Answered</span>
+		<span class="label label-success" ng-show="question.answered">Answered</span>
+		<span class="date pull-right">{{question.time}}</span>
+		<br>
+		<p>
+			{{question.question}}
+		</p>
+	</div>
+	<div class="answer" style="display:none">
+		<a class="close pull-right" ng-click="remove(q,question._id)">&times;</a>
+		<span class="name pull-left"><i>Answer
+			<span class="label label-important" ng-show="question.private">Private ({{question.reply_to}})</span>
+		</i></span>
+		<br>
+		<p>
+			<div class="input-append" style="text-align:center" >
+				<input type="text" name="question.answer" ng-model="question.answer" class="span10" required>
+		    	<button type="submit" class="btn" ng-click="save(q)">Answer</button>
+		    </div>
+		</p>
+	</div>
+</div>
+</questions>
+<div class="pagination">
+  <ul>
+    <li ng-repeat="i in pages"><a href='#/ask/{{i}}'>{{i}}</a></li>
+  </ul>
+</div>
+
+</div>

@@ -1,0 +1,21 @@
+<h2>Blog</h2>
+<div>
+<ul>
+	<li style="list-style-type: none; font-family: 'Black Ops One', cursive;font-size: x-large; color:#696969;" ng-repeat="post in posts">
+		<span style="border-bottom: 1px solid grey; display:inline-block; margin: 2px">
+			[{{$index+1}}]
+			<a href="#post/{{post._id}}"> {{post.title}} ({{post.comments.length}})</a>
+			<span style="font-size: 0.5em" >by {{post.author}} ({{post.time}})</span>
+		</span>
+	</li>
+</ul>
+<div class="pagination">
+	<ul>
+		<li ng-repeat="i in pages"><a href='#/posts/{{i}}'>{{i}}</a></li>
+	</ul>
+</div>
+</div>
+<button type="button" ng-click="add(posts,{_id:0,title:'Untitled'})" class="btn btn-success">+</button>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>

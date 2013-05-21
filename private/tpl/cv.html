@@ -1,0 +1,76 @@
+<h2>{{cv.title.toUpperCase()}}</h2>
+<div>
+	<label>Name</label>
+	<input class="span12" type="text" ng-model="cv.content.name"/>
+	<label>Personal Profile</label>
+	<label>Contacts
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.contacts)">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.contacts">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(c,contact) in cv.content.contacts">
+			<button class="btn btn-small btn-danger" ng-click="del(c,cv.content.contacts)">X</button>
+			<input type="text" placeholder="Type" ng-model="contact.type"/>
+			<input type="text" placeholder="Link" ng-model="contact.link"/>
+			<input type="text" placeholder="title" ng-model="contact.title"/>
+		</li>
+	</ul>
+	<label>Education
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.education)">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.education">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(e,edu) in cv.content.education">
+			<button class="btn btn-small btn-danger" ng-click="del(e,cv.content.education)">X</button>
+			<input type="text" placeholder="Title" ng-model="edu.title"/>
+			<input type="text" placeholder="Period" ng-model="edu.period"/>
+			<input type="text" placeholder="Degree" ng-model="edu.degree"/>
+		</li>
+	</ul>
+	<label>Language Skills
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.language)">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.language">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(l,lang) in cv.content.language">
+			<button class="btn btn-small btn-danger" ng-click="del(l,cv.content.language)">X</button>
+			<input type="text" placeholder="Language" ng-model="lang.lang"/>
+			<input type="text" placeholder="Level" ng-model="lang.level"/>
+		</li>
+	</ul>
+	<label>Summary of Qualification
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.skills,{p:''})">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.skills">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(s,skill) in cv.content.skills">
+			<button class="btn btn-small btn-danger" ng-click="del(s,cv.content.skills)">X</button>
+			<input class="span10" type="text" placeholder="Skill" ng-model="skill.p"/>
+		</li>
+	</ul>
+	<label>
+		Projects
+	</label>
+	<label>Pet Projects
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.projects.pet)">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.projects.pet">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(p,ppr) in cv.content.projects.pet">
+			<button class="btn btn-small btn-danger" ng-click="del(p,cv.content.projects.pet)">X</button>
+			<input class="span3" type="text" placeholder="Title" ng-model="ppr.title"/>
+			<input class="span8" type="text" placeholder="Description" ng-model="ppr.description"/>
+		</li>
+	</ul>
+	<label>Contributing Projects
+		<button class="btn btn-small btn-success" ng-click="add(cv.content.projects.contributor)">+</button>
+	</label>
+	<ul ui-sortable ng-model="cv.content.projects.contributor">
+		<li style="list-style-type: none" class="form-inline" ng-repeat="(cp,cpr) in cv.content.projects.contributor">
+			<button class="btn btn-small btn-danger" ng-click="del(cp,cv.content.projects.contributor)">X</button>
+			<input class="span4" type="text" placeholder="Title" ng-model="cpr.title"/>
+			<input class="span4" type="text" placeholder="Role" ng-model="cpr.role"/>
+			<input class="span4" type="text" placeholder="Url" ng-model="cpr.url"/>
+			<input class="span12" type="text" placeholder="Level" ng-model="cpr.description"/>
+		</li>
+	</ul>
+</div>
+<hr>
+<button type="button" ng-click="save()" class="pull-right btn btn-info">Save</button>
+<div class="alert alert-success" ng-show="saved">Saved</div>
+<div class="alert alert-error" ng-show="error">An error occured</div>

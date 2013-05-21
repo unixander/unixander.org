@@ -1,0 +1,41 @@
+<projects>
+<div class="data">
+	<h2>Projects</h2>
+	<div class="accordion" id="acc_projects">
+		<div class="accordion-group projects-item" ng-repeat="project in projects.content">
+			<div class="accordion-heading projectname">
+				<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#acc_projects" href="#{{project.link}}">{{project.name}}</a>
+			</div>
+			<div id="{{project.link}}" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<b class="note">Release Date</b>: {{project.release}}<br>
+					<b class="note">Current version</b>: {{project.version}}<br>
+					<b class="note">Current status</b>: {{project.status}}<br>
+					<b class="note">My role</b>: {{project.role}}<br>
+					<b class="note">Website(s)</b>:
+					<a ng-repeat="site in project.website" href="{{site.url}}">[{{site.title}}] </a>
+					<br>
+					<b class="note">Requirements</b>: {{project.requirements}}<br>
+					<b class="note">Description</b>: {{project.description}}<br>
+					<b class="note" ng-show="project.notes">Developer's notes</b>: {{project.notes}}
+					<br>
+					<hr>
+					<div id="{{project.link}}_Carousel" ng-show="project.images" class="carousel slide project_car">
+						<div class="carousel-inner" align="center" style="color:white">
+							<div ng-repeat="image in project.images" class="item {{image.active}}" >
+								<img style="max-height:250px;" src="{{image.url}}" alt="{{image.title}}" />
+								<div class="carousel-caption">
+									<h4>{{image.title}}</h4>
+								</div>
+							</div>
+						</div>
+						<!-- Carousel nav -->
+						<a class="carousel-control left" href="#{{project.link}}_Carousel" data-slide="prev">&lsaquo;</a>
+						<a class="carousel-control right" href="#{{project.link}}_Carousel" data-slide="next">&rsaquo;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</projects>
